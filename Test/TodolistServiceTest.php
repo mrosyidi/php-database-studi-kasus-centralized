@@ -18,4 +18,12 @@
     $todolistService->showTodolist();
   }
 
-  testShowTodolist();
+  function testAddTodolist(): void
+  {
+    $connection = Database::getConnection();
+    $todolistRepository = new TodolistRepositoryImpl($connection);
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistService->addTodolist("Belajar PHP Unit Test");
+  }
+
+  testAddTodolist();
