@@ -9,7 +9,7 @@
     {
       public function showTodolist(): void;
       public function addTodolist(string $todo): void;
-      public function removeTodo(int $number): void;
+      public function removeTodolist(int $number): void;
     }
 
     class TodolistServiceImpl implements TodolistService
@@ -26,10 +26,9 @@
         echo "TODOLIST" . PHP_EOL;
 
         $todolist = $this->todolistRepository->findAll();
-        foreach($todolist as $number => $todo)
+        foreach($todolist as $todo)
         {
-          $number = $number + 1;
-          echo "$number. " . $todo->getTodo() . PHP_EOL;
+          echo $todo->getId() . ". " . $todo->getTodo() . PHP_EOL;
         }
       }
 
@@ -41,9 +40,15 @@
         echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL;
       }
 
-      public function removeTodo(int $number): void
+      public function removeTodolist(int $number): void
       {
-
+        if($this->todolistRepository->remove($number))
+        {
+          echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
+        }else
+        {
+          echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
+        }
       }
     }
   }
