@@ -31,4 +31,4 @@
     $todolistView->addTodolist();
   }
 
-  testViewAddTodolist();
+  testViewShowTodolist();
