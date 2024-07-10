@@ -26,4 +26,13 @@
     $todolistService->addTodolist("Belajar PHP Unit Test");
   }
 
-  testAddTodolist();
+  function testRemoveTodolistFailed(): void
+  {
+    $connection = Database::getConnection();
+    $todolistRepository = new TodolistRepositoryImpl($connection);
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistService->removeTodolist(10);
+    $todolistService->showTodolist();
+  }
+
+  testRemoveTodolistFailed();
