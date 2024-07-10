@@ -42,4 +42,4 @@
     $todolistService->showTodolist();
   }
 
-  testViewRemoveTodolist();
+  testViewShowTodolist();
