@@ -43,5 +43,20 @@
 
         echo "Sampai Jumpa Lagi" . PHP_EOL;
       }
+
+      public function addTodolist(): void
+      {
+        echo "MENAMBAH TODOLIST" . PHP_EOL;
+
+        $todo = InputHelper::input("Todo (x untuk batal)");
+
+        if($todo == "x")
+        {
+          echo "Batal menambah todo" . PHP_EOL;
+        }else
+        {
+          $this->todolistService->addTodolist($todo);
+        }
+      }
     }
   }
