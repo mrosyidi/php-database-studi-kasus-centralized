@@ -28,7 +28,7 @@
 
           if($pilihan == "1")
           {
-
+            $this->addTodolist();
           }else if($pilihan == "2")
           {
 
