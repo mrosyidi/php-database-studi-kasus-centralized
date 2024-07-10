@@ -31,7 +31,7 @@
             $this->addTodolist();
           }else if($pilihan == "2")
           {
-
+            $this->removeTodolist();
           }else if($pilihan == "x")
           {
             break;
