@@ -13,7 +13,6 @@
 
     class TodolistRepositoryImpl implements TodolistRepository
     {
-      public array $todolist = array();
       private \PDO $connection;
 
       public function __construct(\PDO $connection)
@@ -30,7 +29,20 @@
 
       public function remove(int $number): bool
       {
+        $sql = "SELECT id FROM todolist WHERE id=?";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute([$number]);
 
+        if($statement->fetch())
+        {
+          $sql = "DELETE FROM todolist WHERE id=?";
+          $statement = $this->connection->prepare($sql);
+          $statement->execute([$number]);
+          return true;
+        }else
+        {
+          return false;
+        }
       }
 
       public function findAll(): array
