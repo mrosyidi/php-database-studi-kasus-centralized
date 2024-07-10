@@ -22,4 +22,13 @@
     $todolistView->showTodolist();
   }
 
-  testViewShowTodolist();
+  function testViewAddTodolist(): void
+  {
+    $connection = Database::getConnection();
+    $todolistRepository = new TodolistRepositoryImpl($connection);
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistView = new TodolistView($todolistService);
+    $todolistView->addTodolist();
+  }
+
+  testViewAddTodolist();
