@@ -35,4 +35,13 @@
     $todolistService->showTodolist();
   }
 
-  testRemoveTodolistFailed();
+  function testRemoveTodolist(): void
+  {
+    $connection = Database::getConnection();
+    $todolistRepository = new TodolistRepositoryImpl($connection);
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistService->removeTodolist(2);
+    $todolistService->showTodolist();
+  }
+
+  testRemoveTodolist();
