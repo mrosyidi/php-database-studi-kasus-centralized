@@ -23,7 +23,9 @@
 
       public function save(Todolist $todolist): void
       {
-
+        $sql = "INSERT INTO todolist(todo) VALUES(?)";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute([$todolist->getTodo()]);
       }
 
       public function remove(int $number): bool
